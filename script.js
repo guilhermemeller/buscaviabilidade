@@ -28,19 +28,25 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
         header: true,
         complete: function(results) {
             const data = results.data;
-            let found = false;
+            let cepExists = false;
+            let cepNumeroExists = false;
 
             for (let row of data) {
-                if (row.CEP === cep && row.NUMERO === numero) { // Use NUMERO em vez de Numero
-                    found = true;
-                    break;
+                if (row.CEP === cep) {
+                    cepExists = true;
+                    if (row.NUMERO === numero) {
+                        cepNumeroExists = true;
+                        break;
+                    }
                 }
             }
 
-            if (found) {
-                modalMessage.innerHTML = `<span style="color: green;">O CEP ${cep}, número ${numero} Possui Viabilidade ✔.</span>`;
+            if (cepExists && cepNumeroExists) {
+                modalMessage.innerHTML = `<span style="color: green;">O CEP ${cep}, número ${numero} Possui Viabilidade ✔</span>`;
+            } else if (cepExists) {
+                modalMessage.innerHTML = `<span style="color: green;">O CEP ${cep} Possui viabilidade ✔</span><span style="color: red;"> <br>Mas o número ${numero} Não Possui Viabilidade ✖</span>`;
             } else {
-                modalMessage.innerHTML = `<span style="color: red;">O CEP ${cep}, número ${numero} Não Possui Viabilidade ✖.</span>`;
+                modalMessage.innerHTML = `<span style="color: red;">O CEP ${cep} Não Possui Viabilidade ✖</span>`;
             }
             modal.style.display = 'block';
         },
