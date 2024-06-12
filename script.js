@@ -44,7 +44,7 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
             if (cepExists && cepNumeroExists) {
                 modalMessage.innerHTML = `<span style="color: green;">Viável UltraFibra ✔</span>`;
             } else if (cepExists) {
-                modalMessage.innerHTML = `<span style="color: green;">O CEP ${cep} consta na SuperLista Tim ✔</span><span style="color: red;"> <br>Fachada nº${numero} INVIAVEL ✖</span>`;
+                modalMessage.innerHTML = `<span style="color: green;">O CEP ${cep} consta na SuperLista Tim ✔</span><span style="color: red;"> <br>Fachada nº ${numero} INVIÁVEL ✖</span>`;
             } else {
                 modalMessage.innerHTML = `<span style="color: red;">O CEP ${cep} Não Possui Viabilidade ✖</span>`;
             }
