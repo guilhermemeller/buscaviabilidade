@@ -105,6 +105,26 @@ button:hover {
     width: 80%; /* Could be more or less, depending on screen size */
     max-width: 500px; /* Maximum width */
     text-align: center;
+    border-radius: 15px; /* Added border-radius to make the corners rounded */
+    position: relative; /* Added to position the watermark absolutely */
+}
+
+.watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.3; /* Adjust opacity as needed */
+    max-width: 80%;
+    max-height: 80%;
+    pointer-events: none; /* So the watermark doesn't interfere with other content */
+    z-index: 1; /* Watermark behind the text and button */
+}
+
+.modal-content p,
+#okButton {
+    position: relative;
+    z-index: 2; /* Text and button in front of the watermark */
 }
 
 .close-button {

@@ -20,7 +20,7 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
     // Limpar o conteúdo da div de resultado antes de iniciar uma nova busca
     resultDiv.innerHTML = '';
 
-    const csvUrl = 'base.csv';
+    const csvUrl = 'Assets/base.csv';
 
     Papa.parse(csvUrl, {
         download: true,
@@ -42,7 +42,7 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
             }
 
             if (cepExists && cepNumeroExists) {
-                modalMessage.innerHTML = `<span style="color: green;">Viável UltraFibra ✔</span>`;
+                modalMessage.innerHTML = `<span style="color: green;">Viável UltraFibra ✔</span><span style="color: green;"> <br> Rua  Número , </span>`;
             } else if (cepExists) {
                 modalMessage.innerHTML = `<span style="color: green;">O CEP ${cep} consta na SuperLista Tim ✔</span><span style="color: red;"> <br>Fachada nº ${numero} INVIÁVEL ✖</span>`;
             } else {
@@ -51,7 +51,7 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
             modal.style.display = 'block';
         },
         error: function(error) {
-            modalMessage.innerHTML = `Erro ao processar o arquivo: ${error.message}`;
+            modalMessage.innerHTML = `<span style="color: red;">Erro ao processar o arquivo: ${error.message}</span>`;
             modal.style.display = 'block';
         }
     });
